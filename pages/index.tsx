@@ -13,7 +13,7 @@ const Home: NextPage = () => {
       <div>
         <Header />
       </div>
-      <div className="m-5">
+      <div className="">
         <Job_sorting />
       </div>
       <br />

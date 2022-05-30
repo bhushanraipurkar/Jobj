@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .input {
+    @apply my-4 mx-14 rounded-md border-2 bg-gray-200 p-2 px-2 placeholder:text-gray-500 focus-within:shadow-md focus:outline-none lg:mx-72;
+  }
+  .button-magic {
+    @apply cursor-pointer rounded-md bg-black p-2 px-4 text-base text-white transition-all duration-200 hover:bg-gray-600 hover:px-3 hover:py-2 hover:text-xl hover:shadow-md active:rotate-12 active:border-4 active:border-black active:shadow-2xl;
+  }
+}

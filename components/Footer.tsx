@@ -33,10 +33,13 @@ const Footer = () => {
         </p>
         <br />
         <br />
-        <p className="text-gray-700">@2022 All rights reserved by jobJeevan</p>
+        <p className="text-gray-700">
+          @2022 All rights reserved by{' '}
+          <span className="cursor-pointer hover:underline">jobJeevan</span>
+        </p>
       </div>
       <div className="mx-32 mb-8 flex justify-between md:mx-10 md:mt-40 lg:mx-11">
-        <GoogleIcon className="h-10 w-10 cursor-pointer transition-all duration-150 hover:text-red-700 lg:mx-4 lg:h-16 lg:w-16" />
+        <GoogleIcon className="h-10 w-10 cursor-pointer transition-all duration-150 hover:text-red-700  lg:mx-4 lg:h-16 lg:w-14" />
         <LinkedInIcon className="h-10 w-10 cursor-pointer transition-all duration-150 hover:text-blue-700 lg:mx-4 lg:h-16 lg:w-16" />
         <TwitterIcon className="h-10 w-10 cursor-pointer transition-all duration-150 hover:text-blue-700 lg:mx-4 lg:h-16 lg:w-16" />
         <FacebookRoundedIcon className="h-10 w-10 cursor-pointer transition-all duration-150 hover:text-blue-700 lg:mx-4 lg:h-16 lg:w-16" />

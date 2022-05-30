@@ -8,12 +8,14 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.8.1",
     "next": "latest",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-hot-toast": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "17.0.35",

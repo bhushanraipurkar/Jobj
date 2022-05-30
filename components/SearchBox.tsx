@@ -18,8 +18,8 @@ const SearchBox = () => {
       />
       <Deep
         className={`h-7 w-7 transition-all duration-150 ${
-          inp.length > 0 ? 'text-blue-500' : 'text-gray-400'
-        } cursor-pointer`}
+          inp.length > 0 ? 'text-blue-500 active:rotate-45' : 'text-gray-400'
+        } cursor-pointer `}
       />
     </div>
   )
