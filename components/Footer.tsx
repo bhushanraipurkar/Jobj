@@ -6,7 +6,7 @@ import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded'
 
 const Footer = () => {
   return (
-    <div className="flex flex-col justify-between border-t bg-gray-300 shadow-lg md:flex-row">
+    <div className="sticky bottom-0 flex w-full flex-col justify-between border-t bg-gray-300 shadow-lg md:flex-row">
       <div className="m-16 flex-1 lg:ml-20">
         <h1 className="text-lg font-bold">
           <span className="cursor-pointer hover:text-gray-500 hover:underline">

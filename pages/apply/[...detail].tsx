@@ -13,6 +13,20 @@ const Apply = () => {
     location: [],
   })
 
+  const [apply, setApply] = useState<apply>({
+    orgname: data.title,
+    name: '',
+    address: '',
+    aadharnumber: 0,
+    phonenumber: 0,
+    email: '',
+  })
+
+  const change = (e: any) => {
+    e.preventDefault()
+    setApply((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
   useEffect(() => {
     const slug: any = router.query.detail || []
     setData({
@@ -25,7 +39,29 @@ const Apply = () => {
   const handlesubmit = (e: any) => {
     e.preventDefault()
     const notification = toast.loading('loading ...')
-    // notification
+    if (
+      apply.name == '' ||
+      apply.address == '' ||
+      apply.aadharnumber <= 0 ||
+      apply.phonenumber <= 0
+    ) {
+      toast.error('please fill in all fields !', { id: notification })
+      return
+    } else {
+      if (apply.phonenumber > 999999999) {
+        if (apply.aadharnumber > 99999999999) {
+          toast.success('successfully applied', { id: notification })
+          toast.success('apply more !', { id: notification })
+          router.push('/')
+        } else {
+          toast.error('please use a valid aadhar number', { id: notification })
+          return
+        }
+      } else {
+        toast.error('please use a valid phone number', { id: notification })
+        return
+      }
+    }
 
     toast.success('Successfully applied', { id: notification })
   }
@@ -68,30 +104,43 @@ const Apply = () => {
             value={data.title}
           />
           <input
+            name="name"
+            value={apply.name}
+            onChange={change}
             className="input"
             type="text"
             placeholder="Enter your name here -"
           />
           <input
+            name="address"
+            value={apply.address}
+            onChange={change}
             className="input"
             type="text"
             placeholder="Enter Your address -"
           />
           <input
+            name="aadharnumber"
+            value={apply.aadharnumber}
+            onChange={change}
             className="input"
             type="number"
             placeholder="Enter your aadhar number -"
           />
           <input
+            name="phonenumber"
+            value={apply.phonenumber}
+            onChange={change}
             className="input"
             type="text"
             placeholder="Enter your phone number -"
           />
           <input
+            name="email"
+            value={apply.email}
+            onChange={change}
             className="input"
             type="email"
-            name="email"
-            id="email"
             placeholder="Enter your email -"
           />
         </div>

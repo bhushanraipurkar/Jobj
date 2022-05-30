@@ -5,16 +5,42 @@ import GoogleIcon from '@mui/icons-material/Google'
 import RedditIcon from '@mui/icons-material/Reddit'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import Footer from '../components/Footer'
-import { MouseEvent } from 'react'
+import { MouseEvent, useState } from 'react'
 import toast from 'react-hot-toast'
+import { useRouter } from 'next/router'
 
 const SignIn: NextPage = () => {
+  const router = useRouter()
+  const [data, setData] = useState<user>({
+    email: '',
+    pass: '',
+  })
+
+  const change = (e: any) => {
+    e.preventDefault()
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
   const handlesubmit = (e: any) => {
     e.preventDefault()
     const notification = toast.loading('loading ...')
-    // notification
+    if (data.email == '' || data.pass == '') {
+      toast.error('please fill in all fields .', { id: notification })
+      return
+    }
 
-    toast.success('Sign In successfully', { id: notification })
+    if (data.email == 'bhushan@gmail.com') {
+      if (data.pass == 'bhushan123') {
+        toast.success('Sign In successfully', { id: notification })
+        router.push('/')
+      } else {
+        toast.error('wrong password !', { id: notification })
+        return
+      }
+    } else {
+      toast.error('This email is not valid !', { id: notification })
+      return
+    }
   }
   return (
     <div className="bg-gray-100 ">
@@ -24,11 +50,17 @@ const SignIn: NextPage = () => {
       <div className="mx-auto mt-32 flex max-w-md flex-col  gap-3  rounded-sm border-2 bg-white p-4 shadow-sm">
         <div className="flex flex-col gap-3">
           <input
+            name="email"
+            value={data.email}
+            onChange={change}
             type="text"
             placeholder="Email"
             className="w-full flex-1 border-2 p-2 px-2 focus-within:shadow-md focus:outline-none"
           />
           <input
+            name="pass"
+            value={data.pass}
+            onChange={change}
             type="password"
             placeholder="Password"
             className="w-full flex-1 border-2 p-2 px-2 focus-within:shadow-md focus:outline-none"
@@ -50,10 +82,18 @@ const SignIn: NextPage = () => {
             <p className="text-sm text-gray-400">sign in with</p>
           </div>
           <div className="mx-auto flex flex-row gap-3">
-            <TwitterIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-blue-500 active:rotate-45 lg:h-14 lg:w-14" />
-            <GoogleIcon className="hover: h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-red-700 active:-rotate-12 lg:h-14 lg:w-14" />
-            <RedditIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-red-500 active:rotate-12 lg:h-14 lg:w-14" />
-            <FacebookIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-blue-800 active:rotate-12 lg:h-14 lg:w-14" />
+            <div onClick={() => router.push('/building')}>
+              <TwitterIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-blue-500 active:rotate-45 lg:h-14 lg:w-14" />
+            </div>
+            <div onClick={() => router.push('/building')}>
+              <GoogleIcon className="hover: h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-red-700 active:-rotate-12 lg:h-14 lg:w-14" />
+            </div>
+            <div onClick={() => router.push('/building')}>
+              <RedditIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-red-500 active:rotate-12 lg:h-14 lg:w-14" />
+            </div>
+            <div onClick={() => router.push('/building')}>
+              <FacebookIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-blue-800 active:rotate-12 lg:h-14 lg:w-14" />
+            </div>
           </div>
         </div>
       </div>

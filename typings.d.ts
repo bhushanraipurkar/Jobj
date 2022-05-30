@@ -24,3 +24,18 @@ type job = {
   location: string[]
   image?: string
 }
+
+type user = {
+  email: string
+  pass: string
+  cpass?: string
+}
+
+type apply = {
+  orgname: string
+  name: string
+  address: string
+  aadharnumber: number
+  phonenumber: number
+  email: string
+}

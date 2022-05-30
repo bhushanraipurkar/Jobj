@@ -9,6 +9,7 @@ import {
   useState,
 } from 'react'
 import Ajobs from '../../components/Ajobs'
+import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import Poster from '../../components/Poster'
 import Previewr from '../../components/Previewer'
@@ -69,6 +70,10 @@ const MetaData: NextPage = () => {
 
       <div className="mt-20">
         <Ajobs title={data.title} />
+      </div>
+
+      <div>
+        <Footer />
       </div>
     </div>
   )

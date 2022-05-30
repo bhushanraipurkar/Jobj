@@ -29,14 +29,19 @@ const Header = () => {
           className=" hidden h-7 w-7 max-w-fit cursor-pointer transition-all duration-200 hover:text-blue-500 
         sm:inline "
         />
-        <BellIcon
-          className="hidden h-7 w-7 max-w-fit animate-bounce cursor-pointer transition-all duration-200 
+        <Link href={'/building'}>
+          <BellIcon
+            className="hidden h-7 w-7 max-w-fit animate-bounce cursor-pointer transition-all duration-200 
         hover:text-blue-500 sm:inline"
-        />
-        <NewspaperIcon
-          className="hidden h-7 w-7 max-w-fit cursor-pointer transition-all duration-200 hover:text-blue-500 
+          />
+        </Link>
+        <Link href={'/building'}>
+          <NewspaperIcon
+            className="hidden h-7 w-7 max-w-fit cursor-pointer transition-all duration-200 hover:text-blue-500 
         sm:inline"
-        />
+          />
+        </Link>
+
         <hr className=" border-gray-10 h-10 border" />
         <DotsCircleHorizontalIcon
           className="inline h-7 w-7 max-w-fit cursor-pointer transition-all duration-200 hover:text-blue-500 
