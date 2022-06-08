@@ -1,18 +1,11 @@
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import {
-  JSXElementConstructor,
-  ReactElement,
-  ReactFragment,
-  ReactPortal,
-  useEffect,
-  useState,
-} from 'react'
+import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import Ajobs from '../../components/Ajobs'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import Poster from '../../components/Poster'
-import Previewr from '../../components/Previewer'
 
 const MetaData: NextPage = () => {
   const router = useRouter()
@@ -37,6 +30,13 @@ const MetaData: NextPage = () => {
   }, [router])
   console.log(data)
 
+  const fetching = () => {
+    const indicator = toast.loading('fetching...')
+    setTimeout(() => {
+      toast.success('feed updated.', { id: indicator })
+    }, 1000)
+  }
+
   return (
     <div>
       <Header />
@@ -52,7 +52,11 @@ const MetaData: NextPage = () => {
         <div className="mt-6 mb-5 flex flex-row flex-wrap gap-10">
           {data.subTopics?.map((i: string) => {
             return (
-              <h1 className="cursor-pointer rounded-3xl border-2 p-1 px-3 text-base hover:border-2 hover:border-gray-400 hover:bg-gray-200 hover:shadow-md">
+              <h1
+                onClick={() => fetching()}
+                className=" cursor-pointer rounded-3xl border-2 p-1 px-3 text-base hover:border-2 hover:border-gray-400 hover:bg-gray-200
+              hover:shadow-md active:border-green-600 active:bg-green-100"
+              >
                 {i}
               </h1>
             )

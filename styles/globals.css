@@ -9,4 +9,10 @@
   .button-magic {
     @apply cursor-pointer rounded-md bg-black p-2 px-4 text-base text-white transition-all duration-200 hover:bg-gray-600 hover:px-3 hover:py-2 hover:text-xl hover:shadow-md active:rotate-12 active:border-4 active:border-black active:shadow-2xl;
   }
+  .cinput {
+    @apply m-3 flex-1 rounded-md bg-gray-100 p-2 shadow-sm focus:outline-none;
+  }
+  .cinputsafe {
+    @apply m-3 flex-1 rounded-md border-2 border-green-400 bg-gray-100 p-2 shadow-sm focus:outline-none;
+  }
 }

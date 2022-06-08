@@ -2,12 +2,12 @@ import Card from './Card'
 
 const Job_sorting = () => {
   return (
-    <div className="mt-14">
-      <div className="ml-10 text-2xl lg:ml-32">All jobs</div>
+    <div className="mt-14 items-center align-middle">
+      <div className="mx-10 text-2xl lg:mx-32">All jobs</div>
 
       <div
-        className=" my-5 mx-auto gap-y-8 sm:ml-8 sm:flex
-        sm:flex-row sm:flex-wrap sm:gap-x-5 lg:ml-10 xl:ml-32
+        className=" my-5 mx-auto gap-y-8 sm:mx-8 sm:flex
+        sm:flex-row sm:flex-wrap sm:gap-x-5 lg:mx-10 xl:mx-32
         "
       >
         <Card
@@ -29,11 +29,10 @@ const Job_sorting = () => {
           title="General Store jobs"
           subTopics={[
             'helper',
-            'word boy',
-            'nurse',
+            'cleaner',
             'receptionist',
             'security guard',
-            'velaa',
+            'others...',
           ]}
         />
         <Card
@@ -42,25 +41,18 @@ const Job_sorting = () => {
           title="Restaurent jobs"
           subTopics={[
             'helper',
-            'word boy',
-            'nurse',
+            'sweeper',
+
             'receptionist',
             'security guard',
-            'velaa',
+            'others...',
           ]}
         />
         <Card
           key={4}
           image="/Labour.jpg"
           title="Labour jobs"
-          subTopics={[
-            'helper',
-            'word boy',
-            'nurse',
-            'receptionist',
-            'security guard',
-            'velaa',
-          ]}
+          subTopics={['helper', 'sweeper', 'other...']}
         />
         <Card
           key={5}
@@ -68,11 +60,11 @@ const Job_sorting = () => {
           title="Shopping Mall jobs"
           subTopics={[
             'helper',
-            'word boy',
-            'nurse',
+            'sweeper',
+
             'receptionist',
             'security guard',
-            'velaa',
+            'other...',
           ]}
         />
         <Card
@@ -81,25 +73,18 @@ const Job_sorting = () => {
           title="Hotel jobs"
           subTopics={[
             'helper',
-            'word boy',
-            'nurse',
+            'sweeper',
+
             'receptionist',
             'security guard',
-            'velaa',
+            'other...',
           ]}
         />
         <Card
           key={6}
           image="/Dance.jpg"
           title="Dance Tuitor"
-          subTopics={[
-            'helper',
-            'word boy',
-            'nurse',
-            'receptionist',
-            'security guard',
-            'velaa',
-          ]}
+          subTopics={['helper', 'receptionist', 'security guard', 'other...']}
         />
         <Card
           key={6}

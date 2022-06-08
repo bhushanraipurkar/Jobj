@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 const Apply = () => {
   const router = useRouter()
+  const { data: session } = useSession()
 
   const [data, setData] = useState<job>({
     title: '',
@@ -105,9 +107,11 @@ const Apply = () => {
           />
           <input
             name="name"
-            value={apply.name}
+            value={`${session ? session.user?.name : 'please login first'}`}
             onChange={change}
-            className="input"
+            className={`input cursor-not-allowed ${
+              session ? '' : 'border-2 border-red-400'
+            }`}
             type="text"
             placeholder="Enter your name here -"
           />
@@ -119,40 +123,53 @@ const Apply = () => {
             type="text"
             placeholder="Enter Your address -"
           />
-          <input
-            name="aadharnumber"
-            value={apply.aadharnumber}
-            onChange={change}
-            className="input"
-            type="number"
-            placeholder="Enter your aadhar number -"
-          />
-          <input
-            name="phonenumber"
-            value={apply.phonenumber}
-            onChange={change}
-            className="input"
-            type="text"
-            placeholder="Enter your phone number -"
-          />
+          <hr />
+
+          <div className="mx-16 mt-6">
+            <label htmlFor="aadharnumber">Your Aadhar number -</label>
+            <input
+              id="aadharnumber"
+              name="aadharnumber"
+              value={apply.aadharnumber}
+              onChange={change}
+              className="ml-4 rounded-md bg-gray-200 p-2 text-lg placeholder:text-sm focus:outline-none"
+              type="number"
+              placeholder="aadhar number -"
+            />
+          </div>
+          <div className="mx-16 mt-8">
+            <label htmlFor="phonenumber">Your Phone number -</label>
+
+            <input
+              name="phonenumber"
+              value={apply.phonenumber}
+              onChange={change}
+              className="ml-4 rounded-md bg-gray-200 p-2 text-lg placeholder:text-sm focus:outline-none"
+              type="text"
+              placeholder="Enter your phone number -"
+            />
+          </div>
+          <br />
           <input
             name="email"
-            value={apply.email}
+            value={`${session ? session.user?.email : 'please login first'}`}
             onChange={change}
-            className="input"
+            className={`input  ${session ? '' : 'border-2 border-red-400'}`}
             type="email"
             placeholder="Enter your email -"
           />
         </div>
 
         <div className="mx-56 mt-14 text-center">
-          <button
-            onClick={handlesubmit}
-            className=" button-magic "
-            type="submit"
-          >
-            Apply
-          </button>
+          {session && (
+            <button
+              onClick={handlesubmit}
+              className=" button-magic "
+              type="submit"
+            >
+              Apply
+            </button>
+          )}
         </div>
       </div>
 

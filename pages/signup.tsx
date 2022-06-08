@@ -8,8 +8,9 @@ import Footer from '../components/Footer'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
-const SignUp: NextPage = () => {
+const SignUp: NextPage = (): any => {
   const router = useRouter()
   const [data, setData] = useState<user>({
     email: '',
@@ -38,76 +39,80 @@ const SignUp: NextPage = () => {
     toast.success('Sign In successfully', { id: notification })
     router.push('/signin')
   }
-
-  return (
-    <div className="bg-gray-100 ">
-      <div>
-        <Header />
-      </div>
-      <div className="mx-auto mt-32 flex max-w-md flex-col  gap-3  rounded-sm border-2 bg-white p-4 shadow-sm">
-        <div className="flex flex-col gap-3">
-          <input
-            name="email"
-            value={data.email}
-            onChange={change}
-            type="text"
-            placeholder="Email"
-            className="w-full flex-1 border-2 p-2 px-2 focus-within:shadow-md focus:outline-none"
-          />
-          <input
-            name="pass"
-            value={data.pass}
-            onChange={change}
-            type="password"
-            placeholder="Password"
-            className="w-full flex-1 border-2 p-2 px-2 focus-within:shadow-md focus:outline-none"
-          />
-          <input
-            name="cpass"
-            value={data.cpass}
-            onChange={change}
-            type="password"
-            placeholder="confirm your Password"
-            className="w-full flex-1 border-2 p-2 px-2 focus-within:shadow-md focus:outline-none"
-          />
-        </div>
+  const { data: session } = useSession()
+  if (session) {
+    router.push('/')
+  } else {
+    return (
+      <div className="bg-gray-100 ">
         <div>
-          <button
-            onClick={handleSubmit}
-            type="submit"
-            className="w-full flex-1 rounded-md bg-gradient-to-r from-slate-800 to-slate-600
-            py-2 text-lg text-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-500"
-          >
-            sign up
-          </button>
+          <Header />
         </div>
-        <hr />
-        <div className="flex flex-col gap-3">
+        <div className="mx-auto mt-32 flex max-w-md flex-col  gap-3  rounded-sm border-2 bg-white p-4 shadow-sm">
+          <div className="flex flex-col gap-3">
+            <input
+              name="email"
+              value={data.email}
+              onChange={change}
+              type="text"
+              placeholder="Email"
+              className="w-full flex-1 border-2 p-2 px-2 focus-within:shadow-md focus:outline-none"
+            />
+            <input
+              name="pass"
+              value={data.pass}
+              onChange={change}
+              type="password"
+              placeholder="Password"
+              className="w-full flex-1 border-2 p-2 px-2 focus-within:shadow-md focus:outline-none"
+            />
+            <input
+              name="cpass"
+              value={data.cpass}
+              onChange={change}
+              type="password"
+              placeholder="confirm your Password"
+              className="w-full flex-1 border-2 p-2 px-2 focus-within:shadow-md focus:outline-none"
+            />
+          </div>
           <div>
-            <p className="text-sm text-gray-400">sign un with</p>
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="w-full flex-1 rounded-md bg-gradient-to-r from-slate-800 to-slate-600
+              py-2 text-lg text-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-500"
+            >
+              sign up
+            </button>
           </div>
-          <div className="mx-auto flex flex-row gap-3">
-            <div onClick={() => router.push('/building')}>
-              <TwitterIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-blue-500 active:rotate-45 lg:h-14 lg:w-14" />
+          <hr />
+          <div className="flex flex-col gap-3">
+            <div>
+              <p className="text-sm text-gray-400">sign un with</p>
             </div>
-            <div onClick={() => router.push('/building')}>
-              <GoogleIcon className="hover: h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-red-700 active:-rotate-12 lg:h-14 lg:w-14" />
-            </div>
-            <div onClick={() => router.push('/building')}>
-              <RedditIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-red-500 active:rotate-12 lg:h-14 lg:w-14" />
-            </div>
-            <div onClick={() => router.push('/building')}>
-              <FacebookIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-blue-800 active:rotate-12 lg:h-14 lg:w-14" />
+            <div className="mx-auto flex flex-row gap-3">
+              <div onClick={() => router.push('/building')}>
+                <TwitterIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-blue-500 active:rotate-45 lg:h-14 lg:w-14" />
+              </div>
+              <div onClick={() => router.push('/building')}>
+                <GoogleIcon className="hover: h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-red-700 active:-rotate-12 lg:h-14 lg:w-14" />
+              </div>
+              <div onClick={() => router.push('/building')}>
+                <RedditIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-red-500 active:rotate-12 lg:h-14 lg:w-14" />
+              </div>
+              <div onClick={() => router.push('/building')}>
+                <FacebookIcon className="h-10 w-10 cursor-pointer text-gray-600 transition-all duration-200 hover:text-blue-800 active:rotate-12 lg:h-14 lg:w-14" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="bottom-0 mt-20">
-        <Footer />
+        <div className="bottom-0 mt-20">
+          <Footer />
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default SignUp
