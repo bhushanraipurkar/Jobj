@@ -9,7 +9,7 @@ import Header from '../components/Header'
 const Creatd: NextPage = () => {
   const { data: session } = useSession()
   const [ownjob, setOwnjob] = useState<boolean>(false)
-  const [alljobs, setalljobs] = useState<jobdetail[]>([
+  const [alljobs, setalljobs] = useState<jobwithapplied[]>([
     {
       title: '',
       topic: '',
@@ -26,6 +26,7 @@ const Creatd: NextPage = () => {
       aadhar: '',
       owner: '',
       rphoto: '',
+      appliedby: [],
     },
   ])
   const get__alljobs = async (email: any) => {

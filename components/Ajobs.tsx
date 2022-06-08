@@ -47,7 +47,8 @@ const Ajobs = ({ title }: Props) => {
   }, [])
 
   const apply = async (id: string) => {
-    const resp = await fetch(`/job435/apply/${id}`, {
+    const newid = JSON.parse(id)
+    const resp = await fetch(`/job435/apply/${newid}`, {
       headers: new Headers({
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -68,7 +69,7 @@ const Ajobs = ({ title }: Props) => {
         {alljobs
           .slice(0)
           .reverse()
-          .map((i, num) => {
+          .map((i: jobdetail, num) => {
             return (
               <div key={num} className="mx-auto mb-5 border-2 shadow-md">
                 <div className="m-4 mb-10 flex flex-row justify-between">
@@ -160,7 +161,7 @@ const Ajobs = ({ title }: Props) => {
                 {session && (
                   <div className="mx-8 mt-14 flex flex-row">
                     <div></div>
-                    <div onClick={() => apply(i._id)}>
+                    <div onClick={() => apply(JSON.stringify(i._id))}>
                       <p className="button-magic">Open to work</p>
                     </div>
                   </div>

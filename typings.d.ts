@@ -47,6 +47,7 @@ type userde = {
 }
 
 type jobdetail = {
+  _id?: string
   title: string
   topic: string
   desc: string
